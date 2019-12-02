@@ -19,7 +19,7 @@ class Wall:
 
 
 class Gate:
-    def __init__(self, w, point1):
+    def __init__(self, w, point1): # i need to add an "orientation" or "ori" variable
         self.w = w
         self.point1x = point1[0]
         self.point1y = point1[1]
@@ -42,5 +42,5 @@ maze = {}
 for key in maze:
     if maze[key] == 1:
         wall = Wall(w, key)
-    elif maze [key] == 2:
+    elif maze [key] == 2: # i should add a "3" to indicate vertical gates
         gate = Gate(w, key)
