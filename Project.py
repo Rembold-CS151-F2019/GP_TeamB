@@ -52,7 +52,30 @@ class Player:
             #this will work in a for loop
             #because if at any point the if statement isn't true, it'll break out
             #put return False outside of if statement so it will check all coordinates
-
+    
+    def end_spot(self):
+        
+        #end_spot = g.Rectangle(g.Point(600,325),g.Point(700,425))
+        #end_spot_center = g.Point(950,375)
+        
+        x1 = self.player.getP1().getX() 
+        y1 = self.player.getP1().getY()
+        x2 = self.player.getP2().getX()
+        y2 = self.player.getP2().getY()
+        
+        #p1 = [x1,y1]
+        #p2 = [x2,y2]
+        #p1 = upper left coordinate
+        #p2 = lower right coordinate
+        
+        if (x1 < 950 < x2) and (y1 < 375 < y2):
+            return True
+        else:
+            return False
+        
+    def undraw(self):
+        self.player.undraw(w)
+        
 if __name__== "__main__":
 
     w = g.GraphWin("Game",1000,750)
@@ -65,14 +88,16 @@ if __name__== "__main__":
     maze.draw(w)
     #how to actually draw it in the window? 
       
-    Player = Player(w,50,375)
+    Player1 = Player(w,50,375)
     
     key = None
-    while Player.collision_detection(maze) == False:
-        key = w.checkKey()
-        Player.control()
-        if key == "q":
-            break
+    
+    while Player1.end_spot() == False:
+        while Player1.collision_detection(maze) == False:
+            key = w.checkKey()
+            Player1.control()
+        Player1.player.undraw()
+        Player1 = Player(w,50,375)
     w.getMouse()    
     w.close()   
 
