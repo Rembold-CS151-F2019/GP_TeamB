@@ -29,6 +29,9 @@ class Key:
         self.keybody.draw(self.w)
         self.prong1.draw(self.w)
         self.prong2.draw(self.w)
+        
+    def print(self):
+        return "Key at location {self.x}, {self.y}"
     
     def make_counter(self):
         """
@@ -54,6 +57,7 @@ class Key:
         self.keys_number=g.Text(g.Point(60,25), str(Key.keys_collected))
         self.keys_number.setFill("white")
         self.keys_number.draw(self.w)
+        player_keys.append(self)
     
     def use_key(self):
         """
@@ -64,15 +68,19 @@ class Key:
         self.keys_number=g.Text(g.Point(60,25), str(Key.keys_collected))
         self.keys_number.setFill("white")
         self.keys_number.draw(self.w)
+        player_keys.remove(self)
         
         
 if __name__ == '__main__':
     w=g.GraphWin("test key", 1000, 750)
     w.setBackground("black")
+    player_keys=[]
     key=Key(w,250,250)
     w.getMouse()
     key.collect_key()
+    print(player_keys)
     w.getMouse()
     key.use_key()
+    print(player_keys)
     w.getMouse()
     w.close()
