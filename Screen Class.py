@@ -13,7 +13,7 @@ class Screen:
 class Death(Screen):
     def __init__(self, w):
         self.w = w
-        Screen.__init__(self.w)
+        Screen.__init__(self, w)
         self.bar()
         self.death()
     
@@ -26,7 +26,7 @@ class Death(Screen):
 class Win(Screen):
     def __init__(self, w):
         self.w = w
-        Screen.__init__(self.w)
+        Screen.__init__(self, w)
         self.bar()
         self.win()
     
