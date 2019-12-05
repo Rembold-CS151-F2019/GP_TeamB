@@ -1,5 +1,6 @@
 import graphics as g
 
+
 class Key:
     keys_collected=0
     def __init__ (self, w, x, y):
@@ -30,46 +31,52 @@ class Key:
         self.prong2.draw(self.w)
         
     
-    def make_counter(self):
-        """
-        Makes the initial counter. Will always start with zero keys.
-        """
-        self.keys_text=g.Text(g.Point(30,25), f"KEYS:{str(Key.keys_collected)}")
+def make_counter(window):
+    """
+    Makes the initial counter. Will always start with zero keys.
+    """
+    global keys_text
+
+    keys_text=g.Text(g.Point(30,25), f"KEYS:{str(Key.keys_collected)}")
         
-        #self.keys_number=g.Text(g.Point(60,25), ))
+    #self.keys_number=g.Text(g.Point(60,25), ))
         
-        self.keys_text.setFill("grey")
-        #self.keys_number.setFill("grey")
-        self.keys_text.draw(self.w)
-        #self.keys_number.draw(self.w)
+    keys_text.setFill("grey")
+    #self.keys_number.setFill("grey")
+    keys_text.draw(window)
+    #self.keys_number.draw(self.w)
     
         
-    def collect_key(self):
-        """
-        Removes key from screen and adds key to counter.
-        """
-        if self!=None:
-            self.loop.undraw()
-            self.keybody.undraw()
-            self.prong1.undraw()
-            self.prong2.undraw()
-            
-            Key.keys_collected+=1
-            self.keys_text.undraw()
-            
-            self.keys_text=g.Text(g.Point(30,25), f"KEYS:{str(Key.keys_collected)}")
-            self.keys_text.setFill("grey") 
-            self.keys_text.draw(self.w)
+def collect_key(key):
+    """
+    Removes key from screen and adds key to counter. requires key object type input
+    """
+    global keys_text
     
-    def use_key(self):
-        """
-        removes key from inventory and adjusts key counter
-        """
-        Key.keys_collected-=1
-        self.keys_text.undraw()
-        self.keys_text=g.Text(g.Point(30,25), f"KEYS:{str(Key.keys_collected)}")
-        self.keys_text.setFill("grey")
-        self.keys_text.draw(self.w)
+    if key!=None:
+        key.loop.undraw()
+        key.keybody.undraw()
+        key.prong1.undraw()
+        key.prong2.undraw()
+        
+        Key.keys_collected+=1
+        keys_text.undraw()
+        
+        keys_text=g.Text(g.Point(30,25), f"KEYS:{str(Key.keys_collected)}")
+        keys_text.setFill("grey") 
+        keys_text.draw(key.w)
+    
+def use_key(key):
+    """
+    removes key from inventory and adjusts key counter
+    """
+    global keys_text
+    
+    Key.keys_collected-=1
+    keys_text.undraw()
+    keys_text=g.Text(g.Point(30,25), f"KEYS:{str(Key.keys_collected)}")
+    keys_text.setFill("grey")
+    keys_text.draw(key.w)
         
         
 if __name__ == '__main__':

@@ -29,7 +29,7 @@ key3=k.Key(w, 855, 100)
 all_keys=[key1, key2, key3]
 player=p.Player(w, 60, 360)
 
-key1.make_counter()
+k.make_counter(w)
 player_key_list=[]
 
 keyboard=None
@@ -38,22 +38,22 @@ while keyboard!= "q":
     player.control(keyboard)
     if player.collision_detection(maze) == False:
         
-        for key in all_keys:
+        for key in all_keys.copy():
             if player.overlap_key(key)==True:
                 player_key_list.append(key)
-                key.collect_key()
+                k.collect_key(key)
                 all_keys.remove(key)
                 key=None
                 
            
-        for gate in all_gates:
+        for gates in all_gates:
             
-            if player.overlap_gate(gate)==True:
+            if player.overlap_gate(gates)==True:
                 if k.Key.keys_collected>0:
-                    gate.delete()
-                    all_gates.remove(gate)
-                    gate=None
-                    player_key_list[0].use_key()
+                    gates.delete()
+                    all_gates.remove(gates)
+                    gates=None
+                    k.use_key(player_key_list[0])
 
                 else:
                     you_died=s.Death(w)
