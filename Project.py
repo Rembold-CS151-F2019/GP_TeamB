@@ -1,4 +1,3 @@
-
 import graphics as g
 
 class Player:
@@ -13,9 +12,9 @@ class Player:
         self.player = g.Rectangle(g.Point(self.x-25,self.y-25),g.Point(self.x+25,self.y+25))
         #should be a 50x50 rectangle
         self.player.setFill("red")
-        self.player.draw(w)
+        self.player.draw(self.w)
         
-    def control(self):
+    def control(self, key):
         if key == "Up" or key == "w":
             self.player.move(0,-5)
         elif key == "Down" or key == "s":
@@ -51,7 +50,7 @@ class Player:
         return False 
             #this will work in a for loop
             #because if at any point the if statement isn't true, it'll break out
-            #put return False outside of if statement so it will check all coordinates
+            #put return False outside of if statement so it wiqll check all coordinates
     
     def end_spot(self):
         
@@ -59,8 +58,8 @@ class Player:
         #end_spot_center = g.Point(950,375)
         
         end_point = g.Circle(g.Point(950,375),20)
-        end_point.setFill("grey")
-        end_point.draw(w)
+        end_point.setOutline("green")
+        end_point.draw(self.w)
         
         x1 = self.player.getP1().getX() 
         y1 = self.player.getP1().getY()
@@ -78,8 +77,41 @@ class Player:
             return False
         
     def undraw(self):
-        self.player.undraw(w)
+        self.player.undraw()
         
+        
+        
+    def overlap_key(self, key):
+        if key!=None:
+            x1 = self.player.getP1().getX() 
+            y1 = self.player.getP1().getY()
+            x2 = self.player.getP2().getX()
+            y2 = self.player.getP2().getY()
+            if x1 < key.x < x2: #check x
+               if y1 < key.y < y2: #check y
+                   return True
+        return False
+    
+    def overlap_gate(self, gate):
+        if gate!=None:
+            Px1 = self.player.getP1().getX() 
+            Py1 = self.player.getP1().getY()
+            Px2 = self.player.getP2().getX()
+            Py2 = self.player.getP2().getY()
+            
+            Gx1=gate.door.getP1().getX()
+            Gy1=gate.door.getP1().getY()
+            Gx2=gate.door.getP2().getX()
+            Gy2=gate.door.getP2().getY()
+            
+            if  Gx1< Px1 < Gx2 or Gx1 < Px2 < Gx2: #check x
+               if Gy1 < Py1 < Gy2 or Gy1 < Py2 < Gy2: #check y
+                   return True
+        return False
+    
+    
+    
+
 if __name__== "__main__":
 
     w = g.GraphWin("Game",1000,750)
@@ -92,16 +124,14 @@ if __name__== "__main__":
     maze.draw(w)
     #how to actually draw it in the window? 
       
-    Player1 = Player(w,50,375)
+    Player = Player(w,50,375)
     
     key = None
-    
-    while Player1.end_spot() == False:
+    while Player.collision_detection(maze) == False:
         key = w.checkKey()
-        Player1.control()
-        if Player1.collision_detection(maze) == True:
-            Player1.player.undraw()
-            Player1 = Player(w,50,375)
+        Player.control()
+        if key == "q":
+            break
     w.getMouse()    
     w.close()   
 
@@ -112,9 +142,7 @@ if __name__== "__main__":
 create gif same size as window with black walls 
 plop the image into the window (theoretically the same size so coordinates match)
 if any of my four corners hits something black - signify end of game
-
 '''
-    
     
     
     
