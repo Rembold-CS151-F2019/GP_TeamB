@@ -7,7 +7,7 @@ import Screen_Class as s
 
 
 
-w=g.GraphWin("test maze", 1000, 750)
+w=g.GraphWin("Maze 2", 1000, 750)
 
 maze=g.Image(g.Point(500, 375), "Maze2.png")
 maze.draw(w)
