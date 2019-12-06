@@ -30,11 +30,11 @@ player_key_list=[]
 #maze=g.Image(g.Point(500, 375), "Maze2.png")
 #maze.draw(w)
 #
-#gate1=gate.Gate(w, "v",(350, 275), 90)
-#gate2=gate.Gate(w, "h", (445, 627), 90)
-#gate3=gate.Gate(w, "h", (735, 323), 90)
-#gate4=gate.Gate(w, 'h', (834, 167), 90)
-#gate5=gate.Gate(w, 'h', (540, 425), 90)
+#gate1=gate.Gate(w, "v",(350, 270), 90)
+#gate2=gate.Gate(w, 'h', (833, 167), 85)
+#gate3=gate.Gate(w, "h", (737, 323), 85)
+#gate4=gate.Gate(w, 'h', (544, 425), 85)
+#gate5=gate.Gate(w, "h", (450, 627), 85)
 #all_gates=[gate1, gate2, gate3, gate4, gate5]
 #
 #
