@@ -7,12 +7,6 @@ import Screen_Class as s
 
 
 
-
-
-
-
-
-
 w=g.GraphWin("test maze", 1000, 750)
 maze=g.Image(g.Point(500, 375), "Maze1improved.png")
 maze.draw(w)
@@ -31,6 +25,28 @@ player=p.Player(w, 60, 360)
 
 k.make_counter(w)
 player_key_list=[]
+
+#maze 2:
+#maze=g.Image(g.Point(500, 375), "Maze2.png")
+#maze.draw(w)
+#
+#gate1=gate.Gate(w, "v",(350, 275), 90)
+#gate2=gate.Gate(w, "h", (445, 627), 90)
+#gate3=gate.Gate(w, "h", (735, 323), 90)
+#gate4=gate.Gate(w, 'h', (834, 167), 90)
+#gate5=gate.Gate(w, 'h', (540, 425), 90)
+#all_gates=[gate1, gate2, gate3, gate4, gate5]
+#
+#
+#key1=k.Key(w, 163, 365)
+#key2=k.Key(w, 255, 569)
+#key3=k.Key(w, 350, 569)
+#key4=k.Key(w, 325, 460)
+#all_keys=[key1, key2, key3, key4]
+#player=p.Player(w, 60, 360)
+#
+#k.make_counter(w)
+#player_key_list=[]
 
 keyboard=None
 while keyboard!= "q":
