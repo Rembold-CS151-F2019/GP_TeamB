@@ -21,8 +21,8 @@ all_gates=[gate1, gate2, gate3]
 key1=k.Key(w, 130,115)
 key2=k.Key(w, 430, 630)
 key3=k.Key(w, 855, 100)
-key4=k.Key(w, 130, 140)
-all_keys=[key1, key2, key3, key4]
+
+all_keys=[key1, key2, key3]
 player=p.Player(w, 60, 360)
 
 k.make_counter(w)
