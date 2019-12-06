@@ -37,11 +37,11 @@ def make_counter(window):
     """
     global keys_text
 
-    keys_text=g.Text(g.Point(30,25), f"KEYS:{str(Key.keys_collected)}")
+    keys_text=g.Text(g.Point(60,40), f"KEYS: {str(Key.keys_collected)}")
         
     #self.keys_number=g.Text(g.Point(60,25), ))
         
-    keys_text.setFill("grey")
+    keys_text.setFill("white")
     #self.keys_number.setFill("grey")
     keys_text.draw(window)
     #self.keys_number.draw(self.w)
@@ -62,8 +62,8 @@ def collect_key(key):
         Key.keys_collected+=1
         keys_text.undraw()
         
-        keys_text=g.Text(g.Point(30,25), f"KEYS:{str(Key.keys_collected)}")
-        keys_text.setFill("grey") 
+        keys_text=g.Text(g.Point(60,40), f"KEYS: {str(Key.keys_collected)}")
+        keys_text.setFill("white") 
         keys_text.draw(key.w)
     
 def use_key(key):
@@ -74,8 +74,8 @@ def use_key(key):
     
     Key.keys_collected-=1
     keys_text.undraw()
-    keys_text=g.Text(g.Point(30,25), f"KEYS:{str(Key.keys_collected)}")
-    keys_text.setFill("grey")
+    keys_text=g.Text(g.Point(60,40), f"KEYS: {str(Key.keys_collected)}")
+    keys_text.setFill("white")
     keys_text.draw(key.w)
         
         
