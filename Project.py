@@ -57,9 +57,9 @@ class Player:
         #end_spot = g.Rectangle(g.Point(600,325),g.Point(700,425))
         #end_spot_center = g.Point(950,375)
         
-        end_point = g.Circle(g.Point(950,375),20)
-        end_point.setOutline("green")
-        end_point.draw(self.w)
+#        end_point = g.Circle(g.Point(950,375),20)
+#        end_point.setOutline("green")
+#        end_point.draw(self.w)
         
         x1 = self.player.getP1().getX() 
         y1 = self.player.getP1().getY()
